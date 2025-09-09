@@ -9,6 +9,10 @@ export class UsuariosService {
   constructor(private http: HttpClient) {}
 
   login(email: string, password: string) {
-    return this.http.post(this.rutaAPI + '/login', { email, password });
+    return this.http.post(this.rutaAPI, { correo:email, pwd:password });
+  }
+  logout() {
+    localStorage.removeItem('User');
+    location.href = '/login';
   }
 }

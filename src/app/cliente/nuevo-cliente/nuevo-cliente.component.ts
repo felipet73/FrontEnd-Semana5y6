@@ -18,6 +18,7 @@ declare const Swal: any;
   styleUrl: './nuevo-cliente.component.css',
 })
 export class NuevoClienteComponent implements OnInit {
+  emailuser: string = '';
   clienteforms: FormGroup = new FormGroup({});
   titulo_formulario = 'Registro de nuevo cliente';
   id: number = 0;
@@ -27,6 +28,11 @@ export class NuevoClienteComponent implements OnInit {
     private navegacion: Router,
     private parametros: ActivatedRoute
   ) {
+    this.emailuser = localStorage.getItem('User') || '';
+    if (this.emailuser == '') {
+      this.navegacion.navigate(['/login']);
+    }
+
     this.clienteforms = new FormGroup({
       nombres: new FormControl('', [
         Validators.required,
@@ -66,7 +72,13 @@ export class NuevoClienteComponent implements OnInit {
     });
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.emailuser = localStorage.getItem('User') || '';
+    if (this.emailuser == '') {
+      this.navegacion.navigate(['/login']);
+    }
+  }
+
   guardarCliente() {
     if (this.clienteforms.invalid) {
       console.log('Formulario invalido');
@@ -102,7 +114,7 @@ export class NuevoClienteComponent implements OnInit {
             .subscribe((uncliente) => {
               Swal.fire('Clientes', 'Se guardo con exito', 'success');
               this.clienteforms.reset();
-              this.navegacion.navigate(['']);
+              this.navegacion.navigate(['clientes']);
             });
         }
       } else if (result.isDenied) {

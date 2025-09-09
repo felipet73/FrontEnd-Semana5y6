@@ -6,10 +6,21 @@ import { AccesosComponent } from './Administracion/accesos/accesos.component';
 import { NuevoClienteComponent } from './cliente/nuevo-cliente/nuevo-cliente.component';
 import { ProductoComponent } from './producto/producto.component';
 import { NuevoProductoComponent } from './producto/nuevo-producto/nuevo-producto.component';
+import { LoginComponent } from './login/login.component/login.component.component';
 
 export const routes: Routes = [
+    {
+    path: 'login',
+    component: LoginComponent,
+    pathMatch: 'full',
+  },
   {
     path: '',
+    component: ClienteComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'clientes',
     component: ClienteComponent,
     pathMatch: 'full',
   },

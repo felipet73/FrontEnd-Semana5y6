@@ -16,11 +16,22 @@ declare const Swal: any;
 })
 export class ClienteComponent {
   lista_clientes$!: ICliente[];
+  emailuser: string = '';
+  constructor(private clienteServicio: ClienteService) {
 
-  constructor(private clienteServicio: ClienteService) {}
+    this.emailuser = localStorage.getItem('User') || '';
+    if (this.emailuser == '') {
+      location.href = '/login';
+    }
+  }
 
   ngOnInit() {
     this.cargaTabla();
+    this.emailuser = localStorage.getItem('User') || '';
+    if (this.emailuser == '') {
+      location.href = '/login';
+    }
+
   }
   cargaTabla() {
     this.clienteServicio.todos().subscribe((clientes) => {
