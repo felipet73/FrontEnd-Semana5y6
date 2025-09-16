@@ -1,0 +1,38 @@
+<div class="card">
+  <div class="card-header">
+    <h2>Lista de Usuario</h2>
+  </div>
+  <div class="card-body">
+    <button (click)="generarPDF()" [disabled]="this.cargado">
+      {{ this.cargado ? 'Generar PDF' : 'Exportar PDF' }}
+    </button>
+
+    @if(lista_usuarios.length > 0){
+    <div>
+      <p>Total: {{ lista_usuarios.length }}</p>
+      <table class="table table-bordered table-striped table-responsive">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Correo</th>
+            <th>Estado</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (usuario of lista_usuarios; track usuario.id; let i = $index) {
+          <tr>
+            <th>{{ i + 1 }}</th>
+            <td>{{ usuario.nombre }}</td>
+            <td>{{ usuario.apellido }}</td>
+            <td>{{ usuario.email }}</td>
+            <td>{{ usuario.activo == true ? 'Activo' : 'Inactivo' }}</td>
+          </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+    }
+  </div>
+</div>

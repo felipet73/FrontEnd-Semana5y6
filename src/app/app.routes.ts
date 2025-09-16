@@ -7,6 +7,7 @@ import { NuevoClienteComponent } from './cliente/nuevo-cliente/nuevo-cliente.com
 import { ProductoComponent } from './producto/producto.component';
 import { NuevoProductoComponent } from './producto/nuevo-producto/nuevo-producto.component';
 import { LoginComponent } from './login/login.component/login.component.component';
+import { ReportesComponent } from './reporte/reportes.component/reportes.component';
 
 export const routes: Routes = [
     {
@@ -65,5 +66,9 @@ export const routes: Routes = [
         component: AccesosComponent,
       },
     ],
+  },
+  {
+    path: 'reporte',
+    component: ReportesComponent,
   },
 ];
